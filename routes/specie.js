@@ -1,0 +1,9 @@
+const express = require( 'express');
+const router = express.Router();
+
+// Require controller modules.
+const specieController = require('../controllers/specie')
+
+router.get('/', specieController.index);
+
+module.exports = router;
