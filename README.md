@@ -5,8 +5,7 @@ Réalisation d'un API sur Star Wars
 - Respect des 5 règles du REST
 - Techs : node / express / mongo (mongoose obligatoire)
 
-API de base : 
-https://swapi.dev/
+travail en solo
 
 
 ## Objectif : 
@@ -19,6 +18,8 @@ https://swapi.dev/
 
 - L'api : https://swapi.dev/
 - Richardson : https://guide-api-rest.marmicode.fr/api-rest/le-modele-de-maturite-de-richardson (SWAPI intègre déjà le modèle de richardson !)
+- https://editor.swagger.io/
+- https://www.postman.com/
 
 ## Dates cours : 
 - 26/10 jour entier
