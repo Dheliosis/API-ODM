@@ -10,8 +10,9 @@ travail en solo
 
 ## Objectif : 
 
-- réintégrer l'ensemble des données dans Mongo, puis proposer des routes pour les redistribuer.
-- Documenter votre API avec SWAGGER
+1. réintégrer l'ensemble des données dans Mongo, puis proposer des routes pour les redistribuer.
+2. Documenter votre API avec SWAGGER
+3. Mettre en place une authentification avec JWT et les routes qui vont avec
 
 
 ## Liens utiles
