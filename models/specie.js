@@ -22,7 +22,7 @@ const Specie = mongoose.model( 'Specie', {
     },
     
     people: {
-        type: String
+        type: Array
     },
     skin_colors: {
         type: String
