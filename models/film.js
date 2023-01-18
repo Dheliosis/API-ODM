@@ -6,11 +6,11 @@ const Film = mongoose.model( 'Film', {
         type: Array
     },
     created: {
-        type: String,
+        type: Date,
         default: Date.now
     },
     edited: {
-        type: String,
+        type: Date,
         default: Date.now
     },
     vehicles: {
