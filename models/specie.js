@@ -1,7 +1,9 @@
 const mongoose = require( 'mongoose')
+const {addUri} = require('../utils/addUri')
 
-const Specie = mongoose.model( 'Specie', {
+const model = "species"
 
+const schema = new mongoose.Schema({
     edited: {
         type: String
     },
@@ -42,6 +44,17 @@ const Specie = mongoose.model( 'Specie', {
     average_height: {
         type: String
     },
+    uri: {
+        type: String
+    },
 })
+
+schema.post('find', function(doc, next) {
+    doc = addUri(model, doc)
+    next()
+})
+
+const Specie = mongoose.model( 'Specie', schema)
+
 
 module.exports = { Specie }

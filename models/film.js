@@ -1,7 +1,9 @@
 const mongoose = require( 'mongoose')
+const {addUri} = require('../utils/addUri')
 
-const Film = mongoose.model( 'Film', {
+const model = "films"
 
+const schema = new mongoose.Schema( {
     starships: {
         type: Array
     },
@@ -45,6 +47,16 @@ const Film = mongoose.model( 'Film', {
     species: {
         type: Array
     },
+    uri: {
+        type: String
+    },
 })
+
+schema.post('find', function(doc, next) {
+    doc = addUri(model, doc)
+    next()
+})
+
+const Film = mongoose.model( 'Film', schema)
 
 module.exports = { Film }

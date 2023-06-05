@@ -1,6 +1,9 @@
 const mongoose = require( 'mongoose')
+const {addUri} = require('../utils/addUri')
 
-const Transport = mongoose.model( 'Transport', {
+const model = "transports"
+
+const schema = new mongoose.Schema({
     edited: {
         type: Date,
         default: Date.now
@@ -39,6 +42,17 @@ const Transport = mongoose.model( 'Transport', {
     manufacturer :{
         type: String
     },
+    uri: {
+        type: String
+    },
 })
+
+schema.post('find', function(doc, next) {
+    doc = addUri(model, doc)
+    next()
+})
+
+const Transport = mongoose.model( 'Transport', schema)
+
 
 module.exports = { Transport }

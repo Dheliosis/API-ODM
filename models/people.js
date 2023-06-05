@@ -1,6 +1,9 @@
 const mongoose = require( 'mongoose')
+const {addUri} = require('../utils/addUri')
  
-const People = mongoose.model( 'People', {
+const model = "people"
+
+const schema = new mongoose.Schema({
     edited: {
         type: Date,
         default: Date.now
@@ -36,6 +39,17 @@ const People = mongoose.model( 'People', {
     birth_year: {
         type: String
     },
+    uri: {
+        type: String
+    },
 })
+
+schema.post('find', function(doc, next) {
+    doc = addUri(model, doc)
+    next()
+})
+
+const People = mongoose.model( 'People', schema)
+
 
 module.exports = { People }
