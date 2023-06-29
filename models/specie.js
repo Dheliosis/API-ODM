@@ -1,5 +1,5 @@
-const mongoose = require( 'mongoose')
-const {addUri} = require('../utils/addUri')
+const mongoose = require('mongoose')
+const { addUri } = require('../utils/addUri')
 
 const model = "species"
 
@@ -22,7 +22,7 @@ const schema = new mongoose.Schema({
     eye_colors: {
         type: String
     },
-    
+
     people: {
         type: Array
     },
@@ -49,12 +49,12 @@ const schema = new mongoose.Schema({
     },
 })
 
-schema.post('find', function(doc, next) {
+schema.post('find', function (doc, next) {
     doc = addUri(model, doc)
     next()
 })
 
-const Specie = mongoose.model( 'Specie', schema)
+const Specie = mongoose.model('Specie', schema)
 
 
 module.exports = { Specie }

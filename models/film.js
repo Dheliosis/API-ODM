@@ -1,9 +1,9 @@
-const mongoose = require( 'mongoose')
-const {addUri} = require('../utils/addUri')
+const mongoose = require('mongoose')
+const { addUri } = require('../utils/addUri')
 
 const model = "films"
 
-const schema = new mongoose.Schema( {
+const schema = new mongoose.Schema({
     starships: {
         type: Array
     },
@@ -18,7 +18,7 @@ const schema = new mongoose.Schema( {
     vehicles: {
         type: Array
     },
-    
+
     planets: {
         type: Array
     },
@@ -28,7 +28,7 @@ const schema = new mongoose.Schema( {
     title: {
         type: String
     },
-  
+
     episode_id: {
         type: Number
     },
@@ -52,11 +52,11 @@ const schema = new mongoose.Schema( {
     },
 })
 
-schema.post('find', function(doc, next) {
+schema.post('find', function (doc, next) {
     doc = addUri(model, doc)
     next()
 })
 
-const Film = mongoose.model( 'Film', schema)
+const Film = mongoose.model('Film', schema)
 
 module.exports = { Film }

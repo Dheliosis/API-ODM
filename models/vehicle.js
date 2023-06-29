@@ -1,5 +1,5 @@
-const mongoose = require( 'mongoose')
-const {addUri} = require('../utils/addUri')
+const mongoose = require('mongoose')
+const { addUri } = require('../utils/addUri')
 
 const model = "vehicles"
 
@@ -16,11 +16,11 @@ const schema = new mongoose.Schema({
 })
 
 
-schema.post('find', function(doc, next) {
+schema.post('find', function (doc, next) {
     doc = addUri(model, doc)
     next()
 })
 
-const Vehicle = mongoose.model( 'Vehicle', schema)
+const Vehicle = mongoose.model('Vehicle', schema)
 
 module.exports = { Vehicle }

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 var { Starship } = require('../models/starship');
-var ObjectID = require( 'mongoose'). Types.ObjectId;
-exports.index = (req, res ) => {
+var ObjectID = require('mongoose').Types.ObjectId;
+exports.index = (req, res) => {
   console.log('get starship');
   Starship.find((err, docs) => {
     if (!err) {
@@ -14,7 +14,7 @@ exports.index = (req, res ) => {
 
 exports.searchById = (req, res) => {
   const id = req.params.id;
-  if(!ObjectID.isValid(id)){
+  if (!ObjectID.isValid(id)) {
     return res.status(400).send(`No record with given id: ${id}`)
   }
   Starship.findById(id, (err, docs) => {
@@ -26,7 +26,7 @@ exports.searchById = (req, res) => {
   })
 }
 
-exports.insert = (req, res ) => {
+exports.insert = (req, res) => {
   console.log(req.body);
   const starship = req.body;
   const newStarship = new Starship(starship);
@@ -43,14 +43,14 @@ exports.update = (req, res) => {
   const id = req.params.id;
   console.log(`update with given id: ${id}`);
 
-  if(!ObjectID.isValid(id)){
+  if (!ObjectID.isValid(id)) {
     return res.status(400).send(`No record with given id: ${id}`)
   }
 
   const starship = req.body;
 
-  Starship.findByIdAndUpdate(id, {$set: starship},{new: true},(err,docs )=>{
-    if(!err){
+  Starship.findByIdAndUpdate(id, { $set: starship }, { new: true }, (err, docs) => {
+    if (!err) {
       res.status(200).send(docs)
     } else {
       console.log('Error while updating the data' + JSON.stringify(err, undefined, 2))
@@ -58,7 +58,7 @@ exports.update = (req, res) => {
   })
 }
 
-exports.delete = (req, res ) => {
+exports.delete = (req, res) => {
   const id = req.params.id;
   if (!ObjectID.isValid(id)) {
     return res.send(400).send(`No record with given id: ${id}`)

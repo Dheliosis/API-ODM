@@ -1,5 +1,5 @@
-const mongoose = require( 'mongoose')
-const {addUri} = require('../utils/addUri')
+const mongoose = require('mongoose')
+const { addUri } = require('../utils/addUri')
 
 const model = "transports"
 
@@ -8,38 +8,38 @@ const schema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    consumables :{
+    consumables: {
         type: String
     },
-    name :{
+    name: {
         type: String
     },
     created: {
         type: Date,
         default: Date.now
     },
-    cargo_capacity :{
+    cargo_capacity: {
         type: Number
     },
-    passengers :{
+    passengers: {
         type: Number
     },
-    max_atmosphering_speed :{
+    max_atmosphering_speed: {
         type: Number
     },
-    crew :{
+    crew: {
         type: Number
     },
-    length :{
+    length: {
         type: Number
     },
-    model :{
+    model: {
         type: String
     },
-    cost_in_credits :{
+    cost_in_credits: {
         type: Number
     },
-    manufacturer :{
+    manufacturer: {
         type: String
     },
     uri: {
@@ -47,12 +47,12 @@ const schema = new mongoose.Schema({
     },
 })
 
-schema.post('find', function(doc, next) {
+schema.post('find', function (doc, next) {
     doc = addUri(model, doc)
     next()
 })
 
-const Transport = mongoose.model( 'Transport', schema)
+const Transport = mongoose.model('Transport', schema)
 
 
 module.exports = { Transport }
