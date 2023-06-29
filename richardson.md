@@ -7,7 +7,7 @@ Le modèle de maturité de Richardson (Richardson Maturity Model) est un modèle
 - Le niveau 3 : L’utilisation des contrôles hypermédia.
 
 ## Le niveau 0 : Le RPC sur HTTP en POX
-Toutes les requêtes sont envoyées vers le même endpoint (la même URI). Elles sont complètement décrites dans le flux XML envoyé.
+Toutes les requêtes sont envoyées vers le même endpoint (la même URI).
 
 ## Le niveau 1 : l’utilisation de ressources différenciées
 Au niveau 1, les requêtes sont envoyées à des ressources individuelles.
@@ -53,3 +53,22 @@ Le Richardson Maturity Model propose un fil conducteur permettant d’appréhend
 - Niveau 1 : Gérer la complexité de notre système via l’approche « divide & conquer » en introduisant la notion de ressource.
 - Niveau 2 : Eliminer les variantes dans la façon de traiter les choses et de gérer des cas similaires de façon semblable en introduisant un jeu de verbes standards pour manipuler les ressources.
 - Niveau 3 : Auto-documenter le protocole et fournir un premier niveau de découvrabilité au travers de la notion de HATEOAS.
+
+
+# Comment j'ai respecté ce model 
+
+## Le niveau 0
+Toutes mes requêtes sont envoyées sur l'url http://localhost:7777
+
+## Le niveau 1
+Chaque ressource a une url spécifique : pour une interaction avec les films les requêtes doivent être envoyées à l'adresse http://localhost:7777/films, pour les espèces http://localhost:7777/species et ainsi de suite.
+
+## Le niveau 2
+Les requêtes sont identifiées par des verbes HTTP tels que GET, POST, PUT et DELETE. GET http://localhost:7777/species/2 récupéra l'espèce avec l'id 2 alors que DELETE http://localhost:7777/species/2 supprimera l'espèce avec l'id 2. Des status codes sont envoyés une fois les opérations finies :
+- 200, la donnée demandée est renvoyée
+- 201, une donnée a été modifiée
+- 400, l'élément n'a pas été trouvé
+- 500, Une erreur s'est produite
+  
+## Le niveau 3
+Dans chaque requête getAll (index), je renvoie pour chaque entitée l'url pour requêter cette entitée
